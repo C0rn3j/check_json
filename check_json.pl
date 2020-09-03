@@ -19,6 +19,7 @@ my $np = Monitoring::Plugin->new(
 	. "[ -m|--metadata <content> ] "
 	. "[ -T|--contenttype <content-type> ] "
 	. "[ --ignoressl ] "
+	. "[ -v|--verbose ] "
 	. "[ -h|--help ] ",
 	version => '0.5',
 	blurb   => 'Monitoring plugin to check JSON attributes via http(s)',
