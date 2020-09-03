@@ -171,6 +171,10 @@ foreach my $attribute (sort keys %attributes) {
 	if (defined $np->opts->expect && $np->opts->expect ne $check_value) {
 		$np->nagios_exit(CRITICAL, "Expected value (" . $np->opts->expect . ") not found. Actual: " . $check_value);
 	}
+	# Magic hack to make the thing work with JSON values
+	if(JSON::is_bool($check_value)) {
+		$check_value = ( $check_value ? 'OK' : 'FAILED' );
+	}
 	if ( $check_value eq "true" or $check_value eq "false" ) {
 		if ( $check_value eq "true") {
 			$resultTmp = 0;
